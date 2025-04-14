@@ -8,7 +8,7 @@ interface ISearchParamsRequest {
 export const useParking = () => {
   const fetchParkingOffers = async (searchParams: ISearchParamsRequest) => {
     try {
-      return await $fetch("https://mpl-bff.parkos.io/assignment-offers/", {
+      return await $fetch("/api/parking", {
         method: "GET",
         params: {
           location: "parkeren-schiphol",
