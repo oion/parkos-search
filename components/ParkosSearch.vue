@@ -1,11 +1,4 @@
 <script setup lang="ts">
-const props = defineProps<{
-  featureFlags: {
-    "search-parking-relaxed": boolean;
-    "search-parking-tight": boolean;
-  };
-}>();
-
 const isLoading = ref(false);
 const error = ref<string | null>(null);
 
@@ -17,6 +10,7 @@ const arrivalTime = ref("21:00");
 const results = ref();
 
 const { fetchParkingOffers } = useParking();
+const { getFeatureFlag } = useFeatureFlags();
 
 const handleSearch = async () => {
   error.value = null;
@@ -39,45 +33,74 @@ const handleSearch = async () => {
 
 const classes = computed(() => {
   return {
-    "search-parking-relaxed": props.featureFlags["search-parking-relaxed"],
-    "search-parking-tight": props.featureFlags["search-parking-tight"],
+    "search-parking-min-price": getFeatureFlag("searchFilterMinPrice"),
+    "search-parking-sorting-ascending": getFeatureFlag(
+      "searchSortingAscending"
+    ),
   };
 });
 </script>
 
 <template>
-  <fieldset class="rounded-xl bg-slate-300 p-10" :class="classes">
-    <h2 class="m-0 text-2xl">Search Parkings</h2>
+  <div class="flex flex-col gap-4">
+    <h2 class="text-4xl m-4">Shiphol NL Parking</h2>
 
-    <label for="departure">From:</label>
-    <input v-model="departure" type="date" id="departure" name="departure" />
-    <input
-      v-model="departureTime"
-      type="time"
-      id="departureTime"
-      name="departureTime"
-    />
+    <div class="rounded-xl bg-slate-300 p-10" :class="classes">
+      <h3 class="text-sm mb-4">Search Parkings</h3>
 
-    <label for="arrival">To:</label>
-    <input v-model="arrival" type="date" id="arrival" name="arrival" />
-    <input
-      v-model="arrivalTime"
-      type="time"
-      id="arrivalTime"
-      name="arrivalTime"
-    />
+      <div class="flex gap-4">
+        <div class="flex flex-col">
+          <label for="departure" class="font-bold">From</label>
+          <input
+            v-model="departure"
+            type="date"
+            id="departure"
+            name="departure"
+            class="bg-transparent text-lg"
+          />
+          <input
+            v-model="departureTime"
+            type="time"
+            id="departureTime"
+            name="departureTime"
+            class="bg-transparent text-lg"
+          />
+        </div>
 
-    <button type="submit" @click="handleSearch">Search Parkings</button>
-  </fieldset>
+        <div class="flex flex-col">
+          <label for="arrival" class="font-bold">To</label>
+          <input
+            v-model="arrival"
+            type="date"
+            id="arrival"
+            name="arrival"
+            class="bg-transparent text-lg"
+          />
+          <input
+            v-model="arrivalTime"
+            type="time"
+            id="arrivalTime"
+            name="arrivalTime"
+            class="transparent text-lg"
+          />
+        </div>
 
-  <div v-if="isLoading">Loading...</div>
+        <button
+          class="bg-slate-900 text-white rounded-md p-4"
+          type="submit"
+          @click="handleSearch"
+        >
+          Search Parkings
+        </button>
+      </div>
+    </div>
 
-  <div v-else-if="error" class="error">{{ error }}</div>
+    <div v-if="isLoading">Loading...</div>
 
-  <div v-else-if="results">
-    <h2>Results</h2>
-    <pre>
-      {{ results.available }}
-    </pre>
+    <div v-else-if="error" class="error">{{ error }}</div>
+
+    <div v-else-if="results">
+      <ParkosResults :results />
+    </div>
   </div>
 </template>
