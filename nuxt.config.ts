@@ -8,4 +8,5 @@ export default defineNuxtConfig({
     exposeConfig: true,
     viewer: true,
   },
+  css: ["~/assets/css/app.css"],
 });
