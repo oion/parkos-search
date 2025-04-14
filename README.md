@@ -1,37 +1,75 @@
-# Your assignment
+# Nuxt Minimal Starter
 
-This test evaluates your experimentation, problem-solving, time management, and Nuxt/Vue Front-end skills. It assesses your efficiency and quality in a time-sensitive context.
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Evaluation Criteria
+## Setup
 
-* Your Nuxt/Vue skills
-* Your A/B experimentation skills  
-* Use of Tailwind  
-* Problem solving skills  
-* Ability to read specs
+Make sure to install dependencies:
 
-## Parking search page
+```bash
+# npm
+npm install
 
-* Create a search page (SSR) that looks like the wireframe attached below  
-  * Remember it’s just a wireframe and can be expanded upon, think of the end-user and your time constraint  
-* Use this endpoint to fetch search results:
+# pnpm
+pnpm install
 
+# yarn
+yarn install
+
+# bun
+bun install
 ```
-https://mpl-bff.parkos.io/assignment-offers/?location=parkeren-schiphol&arrivalTime=12%3A00&departureTime=12%3A00&arrival=2025-03-12&departure=2025-03-19&version=5&lang=nl
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-* Set up an A/B experiment with a variation on filtering or sorting options  
-  * Think of added value for the users experience or for the business
-* You have a maximum of 4 hours to complete this task  
-  * Making a video/screen recording of you working on the task and explaining your choices is always good
+## Production
 
-## Wireframe
+Build the application for production:
 
-**![](https://i.imgur.com/soC5G5A.png)**
+```bash
+# npm
+npm run build
 
-## Bonus
+# pnpm
+pnpm build
 
-* Make a video of you working on this assignment. 
-* Include a clear introduction in your video that explains how you set up your application and what you aim to achieve with the A/B experiment.
+# yarn
+yarn build
 
-Have fun\! 🚀
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
