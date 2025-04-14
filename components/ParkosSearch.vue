@@ -4,8 +4,8 @@ const error = ref<string | null>(null);
 
 const departure = ref(new Date().toISOString().split("T")[0]);
 const arrival = ref(new Date().toISOString().split("T")[0]);
-const departureTime = ref("21:00");
-const arrivalTime = ref("21:00");
+const departureTime = ref("23:01");
+const arrivalTime = ref("23:00");
 
 const results = ref();
 
@@ -48,7 +48,7 @@ const classes = computed(() => {
     <div class="rounded-xl bg-slate-300 p-10" :class="classes">
       <h3 class="text-sm mb-4">Search Parkings</h3>
 
-      <div class="flex gap-4">
+      <div class="flex gap-4 justify-between">
         <div class="flex flex-row flex-wrap gap-x-4">
           <label for="departure" class="font-bold w-full">From</label>
           <input
