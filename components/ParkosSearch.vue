@@ -42,15 +42,15 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4 max-w-screen-lg mx-auto">
     <h2 class="text-4xl m-4">Shiphol NL Parking</h2>
 
     <div class="rounded-xl bg-slate-300 p-10" :class="classes">
       <h3 class="text-sm mb-4">Search Parkings</h3>
 
       <div class="flex gap-4">
-        <div class="flex flex-col">
-          <label for="departure" class="font-bold">From</label>
+        <div class="flex flex-row flex-wrap gap-x-4">
+          <label for="departure" class="font-bold w-full">From</label>
           <input
             v-model="departure"
             type="date"
@@ -67,8 +67,8 @@ const classes = computed(() => {
           />
         </div>
 
-        <div class="flex flex-col">
-          <label for="arrival" class="font-bold">To</label>
+        <div class="flex flex-row flex-wrap gap-x-4">
+          <label for="arrival" class="font-bold w-full">To</label>
           <input
             v-model="arrival"
             type="date"
@@ -81,12 +81,12 @@ const classes = computed(() => {
             type="time"
             id="arrivalTime"
             name="arrivalTime"
-            class="transparent text-lg"
+            class="bg-transparent text-lg"
           />
         </div>
 
         <button
-          class="bg-slate-900 text-white rounded-md p-4"
+          class="bg-slate-900 text-white rounded-md p-4 self-end justify-self-end"
           type="submit"
           @click="handleSearch"
         >
