@@ -46,8 +46,8 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <fieldset :class="classes">
-    <legend>Search Parkings</legend>
+  <fieldset class="rounded-xl bg-slate-300 p-10" :class="classes">
+    <h2 class="m-0 text-2xl">Search Parkings</h2>
 
     <label for="departure">From:</label>
     <input v-model="departure" type="date" id="departure" name="departure" />

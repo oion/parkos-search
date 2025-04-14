@@ -6,7 +6,7 @@ const featureFlags = {
 </script>
 
 <template>
-  <div>
+  <div class="m-0 p-10">
     <ParkosSearch :feature-flags="featureFlags" />
   </div>
 </template>
