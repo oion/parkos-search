@@ -11,10 +11,10 @@ const error = ref<string | null>(null);
 
 const departure = ref(new Date().toISOString().split("T")[0]);
 const arrival = ref(new Date().toISOString().split("T")[0]);
-const departureTime = ref("19:00");
+const departureTime = ref("21:00");
 const arrivalTime = ref("21:00");
 
-const results = ref([]);
+const results = ref();
 
 const { fetchParkingOffers } = useParking();
 
@@ -24,10 +24,10 @@ const handleSearch = async () => {
 
   try {
     results.value = await fetchParkingOffers({
-      arrival: dateFrom.value,
-      departure: dateTo.value,
-      arrivalTime: "18:00",
-      departureTime: "20:00",
+      arrival: arrival.value,
+      departure: departure.value,
+      arrivalTime: arrivalTime.value,
+      departureTime: departureTime.value,
     });
   } catch (err) {
     error.value = "Failed to fetch parking offers";
@@ -74,12 +74,10 @@ const classes = computed(() => {
 
   <div v-else-if="error" class="error">{{ error }}</div>
 
-  <div v-else-if="results.length">
-    <h2>Search Results</h2>
-    <ul>
-      <li v-for="(result, index) in results" :key="index">
-        {{ result }}
-      </li>
-    </ul>
+  <div v-else-if="results">
+    <h2>Results</h2>
+    <pre>
+      {{ results.available }}
+    </pre>
   </div>
 </template>
