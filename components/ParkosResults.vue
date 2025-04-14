@@ -1,16 +1,10 @@
 <script setup lang="ts">
-interface ParkingResult {
-  merchant: {
-    name: string;
-  };
-  price: number;
-  currency: string;
-}
+import type { ParkingOffer } from "~/types/Parking";
 
 const { results } = defineProps<{
   results: {
-    available: ParkingResult;
-    unavailable: ParkingResult;
+    available: Record<string, ParkingOffer>;
+    unavailable: Record<string, ParkingOffer>;
   };
 }>();
 </script>
