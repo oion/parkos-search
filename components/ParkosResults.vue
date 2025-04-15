@@ -7,6 +7,13 @@ const { results } = defineProps<{
     unavailable: Record<string, ParkingOffer>;
   };
 }>();
+
+const formatCurrency = (value: number, currency: string) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(value);
+};
 </script>
 
 <template>
@@ -21,7 +28,7 @@ const { results } = defineProps<{
       </h3>
       <span class="col-span-7 text-sm">{{ result.parking_type }}</span>
       <p class="col-span-2 text-xl text-orange-700">
-        {{ result.price }} {{ result.currency }}
+        {{ formatCurrency(result.price, result.currency) }}
       </p>
     </div>
   </div>
