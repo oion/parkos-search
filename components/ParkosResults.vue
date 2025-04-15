@@ -12,14 +12,15 @@ const { results } = defineProps<{
 <template>
   <div class="grid grid-cols-1 gap-4">
     <div
-      v-for="(result, name, index) in results.available"
-      class="grid grid-cols-12 gap-4 items-center rounded-lg bg-slate-100 p-4"
+      v-for="result in results.available"
+      :key="result.merchant.id"
+      class="grid grid-cols-12 items-center gap-4 rounded-lg bg-white p-4 shadow-sm"
     >
       <h3 class="col-span-3 font-bold">
         {{ result.merchant.name }}
       </h3>
-      <span class="text-sm col-span-7">{{ result.parking_type }}</span>
-      <p class="col-span-2 text-orange-700 text-xl">
+      <span class="col-span-7 text-sm">{{ result.parking_type }}</span>
+      <p class="col-span-2 text-xl text-orange-700">
         {{ result.price }} {{ result.currency }}
       </p>
     </div>
